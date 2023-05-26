@@ -35,7 +35,10 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/chamodnaja/react-native-reading-card-br301.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chamodnaja/react-native-reading-card-br301.git"
+  },
   "author": "anonymous <anonymous@anonymousmail.com> (-)",
   "license": "MIT",
   "bugs": {
@@ -147,5 +150,8 @@
         }
       ]
     ]
+  },
+  "directories": {
+    "lib": "lib"
   }
 }
