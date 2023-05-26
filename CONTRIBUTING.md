@@ -51,7 +51,7 @@ Remember to add tests for your change if possible. Run the unit tests by:
 ```sh
 yarn test
 ```
-To edit the Objective-C files, open `example/ios/FeitianBr301ModuleExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > react-native-feitian-br301-module`.
+To edit the Objective-C files, open `example/ios/FeitianBr301ModuleExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > react-native-reading-card-br301`.
 
 To edit the Kotlin files, open `example/android` in Android studio and find the source files at `reactnativefeitianbr301module` under `Android`.
 ### Commit message convention

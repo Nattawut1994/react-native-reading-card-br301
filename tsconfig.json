@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-feitian-br301-module": ["./src/index"]
+      "react-native-reading-card-br301": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
