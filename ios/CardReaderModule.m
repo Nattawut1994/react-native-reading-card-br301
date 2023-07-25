@@ -148,7 +148,7 @@ RCT_EXPORT_METHOD(statusCardReader : (RCTResponseSenderBlock)callback) {
    
 }
 
-RCT_EXPORT_METHOD(sendCommand: (RCTResponseSenderBlock)callback)
+RCT_EXPORT_METHOD(sendCommand:(NSDictionary *)options resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
     NSMutableArray *idCardArray = [NSMutableArray array];
     unsigned  int capdulen;
@@ -181,8 +181,8 @@ RCT_EXPORT_METHOD(sendCommand: (RCTResponseSenderBlock)callback)
     int i;
     NSString *rsStr;
     
-    NSMutableArray *istapdu = [NSMutableArray arrayWithObjects: @"00A4040008A000000054480001", @"80B0000402000D", @"80B000110200D1", @"80B01579020064", @"80B00167020012", nil];
-    
+    NSMutableArray *istapdu = [NSMutableArray arrayWithObjects: @"00A4040008A000000054480001", @"80B0000402000D", @"80B000110200D1", @"80B01579020064", @"80B00167020012", @"80B0017B0200FE", @"80B002790200FE", @"80B003770200FE", @"80B004750200FE", @"80B005730200FE", @"80B006710200FE", @"80B0076F0200FE", @"80B0086D0200FE", @"80B0096B0200FE", @"80B00A690200FE", @"80B00B670200FE", @"80B00C650200FE",@"80B00D630200FE", @"80B00E610200FE", @"80B00F5F0200FE", @"80B0105D0200FE", @"80B0115B0200FE", @"80B012590200FE", @"80B013570200FE", @"80B014550200FE", @"80B01553020026", nil];
+
     for (i = 0; i < [istapdu count]; i++) {
         // do something with object
         NSData *apduData =[self hexFromString:[istapdu objectAtIndex: i]];
@@ -254,12 +254,52 @@ RCT_EXPORT_METHOD(sendCommand: (RCTResponseSenderBlock)callback)
                                                                withString:@""];
                 [idCardArray addObject:(dataShow)];
             }else{
-
+                if (options) {  
+                    BOOL with_photo = [options[@"with_photo"] boolValue];
+                    if (with_photo) {
+                         if (i >= 5 && i < 26){
+                            NSData *readapduData =[self hexFromString:@"00C00000FE"];
+                            [readapduData getBytes:capdu length:apduData.length];
+                            capdulen = (unsigned int)[readapduData length];
+                            
+                            SCARD_IO_REQUEST pioSendPci;
+                            LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readPhoto, &readPhotolen);
+                            NSMutableData *RevData2 = [NSMutableData data];
+                            [RevData2 appendBytes:readPhoto length:readPhotolen];
+                            NSString* hexString = ByteArrayToString(RevData2);
+                            [idCardArray addObject:(hexString)];
+                        }else if (i == 26){
+                            NSData *readapduData =[self hexFromString:@"00C0000026"];
+                            [readapduData getBytes:capdu length:apduData.length];
+                            capdulen = (unsigned int)[readapduData length];
+                            
+                            SCARD_IO_REQUEST pioSendPci;
+                            LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readPhoto, &readPhotolen);
+                            NSMutableData *RevData2 = [NSMutableData data];
+                            [RevData2 appendBytes:readPhoto length:readPhotolen];
+                            NSString* hexString = ByteArrayToString(RevData2);
+                            [idCardArray addObject:(hexString)];
+                        }
+                    }
+                }
             }
+           
         }
         
     }
-    callback(@[[NSNull null],idCardArray]);
+    resolve(idCardArray);
+}
+
+NSString *ByteArrayToString(NSData *data) {
+    const unsigned char *bytes = (const unsigned char *)data.bytes;
+    NSUInteger length = data.length;
+    NSMutableString *hexString = [NSMutableString stringWithCapacity:length * 2];
+
+    for (NSUInteger i = 0; i < length; i++) {
+        [hexString appendFormat:@"%02X", bytes[i]];
+    }
+
+    return [hexString lowercaseString];
 }
 
 //init readerInterface and card context
