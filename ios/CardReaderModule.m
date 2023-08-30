@@ -180,9 +180,18 @@ RCT_EXPORT_METHOD(sendCommand:(NSDictionary *)options resolver:(RCTPromiseResolv
     unsigned int readDatalen4 = sizeof(resp) ;
     int i;
     NSString *rsStr;
-    
-    NSMutableArray *istapdu = [NSMutableArray arrayWithObjects: @"00A4040008A000000054480001", @"80B0000402000D", @"80B000110200D1", @"80B01579020064", @"80B00167020012", @"80B0017B0200FE", @"80B002790200FE", @"80B003770200FE", @"80B004750200FE", @"80B005730200FE", @"80B006710200FE", @"80B0076F0200FE", @"80B0086D0200FE", @"80B0096B0200FE", @"80B00A690200FE", @"80B00B670200FE", @"80B00C650200FE",@"80B00D630200FE", @"80B00E610200FE", @"80B00F5F0200FE", @"80B0105D0200FE", @"80B0115B0200FE", @"80B012590200FE", @"80B013570200FE", @"80B014550200FE", @"80B01553020026", nil];
-
+    NSString *mode = options[@"mode"];
+    NSLog (@"mode_send = %@", mode);
+    NSMutableArray *istapdu = [NSMutableArray arrayWithObjects: @"00A4040008A000000054480001",nil];
+    if([mode isEqual: @"personal_data"]){
+        NSLog (@"mode_send = %s", "First");
+        NSArray *sourceArray = [NSArray arrayWithObjects:@"80B0000402000D", @"80B000110200D1", @"80B01579020064", @"80B00167020012", nil];
+        [istapdu addObjectsFromArray:sourceArray];
+    }else if([mode isEqual: @"personal_photo"]){
+        NSLog (@"mode_send = %s", "Second");
+        NSArray *sourceArray = [NSArray arrayWithObjects:@"80B0017B0200FE", @"80B002790200FE", @"80B003770200FE", @"80B004750200FE", @"80B005730200FE", @"80B006710200FE", @"80B0076F0200FE", @"80B0086D0200FE", @"80B0096B0200FE", @"80B00A690200FE", @"80B00B670200FE", @"80B00C650200FE",@"80B00D630200FE", @"80B00E610200FE", @"80B00F5F0200FE", @"80B0105D0200FE", @"80B0115B0200FE", @"80B012590200FE", @"80B013570200FE", @"80B014550200FE", @"80B01553020026", nil];
+        [istapdu addObjectsFromArray:sourceArray];
+    }
     for (i = 0; i < [istapdu count]; i++) {
         // do something with object
         NSData *apduData =[self hexFromString:[istapdu objectAtIndex: i]];
@@ -197,93 +206,91 @@ RCT_EXPORT_METHOD(sendCommand:(NSDictionary *)options resolver:(RCTPromiseResolv
         }else {
             if(i == 0){
 
-            }else if (i == 1){
-                NSData *readapduData =[self hexFromString:@"00C000000D"];
-                [readapduData getBytes:capdu length:readapduData.length];
-                capdulen = (unsigned int)[readapduData length];
-                
-                SCARD_IO_REQUEST pioSendPci;
-                LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readData, &readDatalen);
-                NSMutableData *RevData2 = [NSMutableData data];
-                [RevData2 appendBytes:readData length:readDatalen];
-                NSString *dataShow = [NSString stringWithFormat:@"%s", readData];
-                dataShow = [dataShow stringByReplacingOccurrencesOfString:@"ê"  withString:@""];
-                
-                rsStr =  dataShow;
-                [idCardArray addObject:(dataShow)];
-                
-            }else if (i == 2){
-                NSData *readapduData =[self hexFromString:@"00C00000D1"];
-                [readapduData getBytes:capdu length:readapduData.length];
-                capdulen = (unsigned int)[readapduData length];
-                
-                SCARD_IO_REQUEST pioSendPci;
-                LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readData2, &readDatalen2);
-                NSString *dataShow = [NSString stringWithFormat:@"%s", readData2];
-                dataShow = [dataShow stringByReplacingOccurrencesOfString:@"ê"
-                                                               withString:@""];
-                dataShow = [dataShow stringByReplacingOccurrencesOfString:@"Ó"
-                                                               withString:@""];
-                
-                [idCardArray addObject:(dataShow)];
-            }else if (i == 3){
-                NSData *readapduData =[self hexFromString:@"00C0000064"];
-                [readapduData getBytes:capdu length:apduData.length];
-                capdulen = (unsigned int)[readapduData length];
-                
-                SCARD_IO_REQUEST pioSendPci;
-                LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readData3, &readDatalen3);
-                NSMutableData *RevData2 = [NSMutableData data];
-                [RevData2 appendBytes:readData3 length:readDatalen3];
-                NSString *dataShow = [NSString stringWithFormat:@"%s", readData3];
-                dataShow = [dataShow stringByReplacingOccurrencesOfString:@"ê"
-                                                               withString:@""];
-                [idCardArray addObject:(dataShow)];
-                
-            }else if (i == 4){
-                NSData *readapduData =[self hexFromString:@"00C0000012"];
-                [readapduData getBytes:capdu length:apduData.length];
-                capdulen = (unsigned int)[readapduData length];
-                
-                SCARD_IO_REQUEST pioSendPci;
-                LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readData4, &readDatalen4);
-                NSMutableData *RevData2 = [NSMutableData data];
-                [RevData2 appendBytes:readData4 length:readDatalen4];
-                NSString *dataShow = [NSString stringWithFormat:@"%s", readData4];
-                dataShow = [dataShow stringByReplacingOccurrencesOfString:@"ê"
-                                                               withString:@""];
-                [idCardArray addObject:(dataShow)];
-            }else{
-                if (options) {  
-                    BOOL with_photo = [options[@"with_photo"] boolValue];
-                    if (with_photo) {
-                         if (i >= 5 && i < 26){
-                            NSData *readapduData =[self hexFromString:@"00C00000FE"];
-                            [readapduData getBytes:capdu length:apduData.length];
-                            capdulen = (unsigned int)[readapduData length];
-                            
-                            SCARD_IO_REQUEST pioSendPci;
-                            LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readPhoto, &readPhotolen);
-                            NSMutableData *RevData2 = [NSMutableData data];
-                            [RevData2 appendBytes:readPhoto length:readPhotolen];
-                            NSString* hexString = ByteArrayToString(RevData2);
-                            [idCardArray addObject:(hexString)];
-                        }else if (i == 26){
-                            NSData *readapduData =[self hexFromString:@"00C0000026"];
-                            [readapduData getBytes:capdu length:apduData.length];
-                            capdulen = (unsigned int)[readapduData length];
-                            
-                            SCARD_IO_REQUEST pioSendPci;
-                            LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readPhoto, &readPhotolen);
-                            NSMutableData *RevData2 = [NSMutableData data];
-                            [RevData2 appendBytes:readPhoto length:readPhotolen];
-                            NSString* hexString = ByteArrayToString(RevData2);
-                            [idCardArray addObject:(hexString)];
-                        }
+            }else {
+                if([mode isEqual: @"personal_data"]){
+                    if (i == 1){
+                        NSData *readapduData =[self hexFromString:@"00C000000D"];
+                        [readapduData getBytes:capdu length:readapduData.length];
+                        capdulen = (unsigned int)[readapduData length];
+                        
+                        SCARD_IO_REQUEST pioSendPci;
+                        LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readData, &readDatalen);
+                        NSMutableData *RevData2 = [NSMutableData data];
+                        [RevData2 appendBytes:readData length:readDatalen];
+                        NSString *dataShow = [NSString stringWithFormat:@"%s", readData];
+                        dataShow = [dataShow stringByReplacingOccurrencesOfString:@"ê"  withString:@""];
+                        
+                        rsStr =  dataShow;
+                        [idCardArray addObject:(dataShow)];
+                        
+                    }else if (i == 2){
+                        NSData *readapduData =[self hexFromString:@"00C00000D1"];
+                        [readapduData getBytes:capdu length:readapduData.length];
+                        capdulen = (unsigned int)[readapduData length];
+                        
+                        SCARD_IO_REQUEST pioSendPci;
+                        LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readData2, &readDatalen2);
+                        NSString *dataShow = [NSString stringWithFormat:@"%s", readData2];
+                        dataShow = [dataShow stringByReplacingOccurrencesOfString:@"ê"
+                                                                    withString:@""];
+                        dataShow = [dataShow stringByReplacingOccurrencesOfString:@"Ó"
+                                                                    withString:@""];
+                        
+                        [idCardArray addObject:(dataShow)];
+                    }else if (i == 3){
+                        NSData *readapduData =[self hexFromString:@"00C0000064"];
+                        [readapduData getBytes:capdu length:apduData.length];
+                        capdulen = (unsigned int)[readapduData length];
+                        
+                        SCARD_IO_REQUEST pioSendPci;
+                        LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readData3, &readDatalen3);
+                        NSMutableData *RevData2 = [NSMutableData data];
+                        [RevData2 appendBytes:readData3 length:readDatalen3];
+                        NSString *dataShow = [NSString stringWithFormat:@"%s", readData3];
+                        dataShow = [dataShow stringByReplacingOccurrencesOfString:@"ê"
+                                                                    withString:@""];
+                        [idCardArray addObject:(dataShow)];
+                        
+                    }else if (i == 4){
+                        NSData *readapduData =[self hexFromString:@"00C0000012"];
+                        [readapduData getBytes:capdu length:apduData.length];
+                        capdulen = (unsigned int)[readapduData length];
+                        
+                        SCARD_IO_REQUEST pioSendPci;
+                        LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readData4, &readDatalen4);
+                        NSMutableData *RevData2 = [NSMutableData data];
+                        [RevData2 appendBytes:readData4 length:readDatalen4];
+                        NSString *dataShow = [NSString stringWithFormat:@"%s", readData4];
+                        dataShow = [dataShow stringByReplacingOccurrencesOfString:@"ê"
+                                                                    withString:@""];
+                        [idCardArray addObject:(dataShow)];
+                    }
+                }else if([mode isEqual: @"personal_photo"]){
+                    if (i < 26){
+                        NSData *readapduData =[self hexFromString:@"00C00000FE"];
+                        [readapduData getBytes:capdu length:apduData.length];
+                        capdulen = (unsigned int)[readapduData length];
+                        
+                        SCARD_IO_REQUEST pioSendPci;
+                        LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readPhoto, &readPhotolen);
+                        NSMutableData *RevData2 = [NSMutableData data];
+                        [RevData2 appendBytes:readPhoto length:readPhotolen];
+                        NSString* hexString = ByteArrayToString(RevData2);
+                        [idCardArray addObject:(hexString)];
+                    }else if (i == 26){
+                        NSData *readapduData =[self hexFromString:@"00C0000026"];
+                        [readapduData getBytes:capdu length:apduData.length];
+                        capdulen = (unsigned int)[readapduData length];
+                        
+                        SCARD_IO_REQUEST pioSendPci;
+                        LONG iRet2 = SCardTransmit(gContxtHandle, &pioSendPci, (unsigned char*)capdu, capdulen, NULL, readPhoto, &readPhotolen);
+                        NSMutableData *RevData2 = [NSMutableData data];
+                        [RevData2 appendBytes:readPhoto length:readPhotolen];
+                        NSString* hexString = ByteArrayToString(RevData2);
+                        [idCardArray addObject:(hexString)];
                     }
                 }
             }
-           
         }
         
     }
