@@ -181,14 +181,11 @@ RCT_EXPORT_METHOD(sendCommand:(NSDictionary *)options resolver:(RCTPromiseResolv
     int i;
     NSString *rsStr;
     NSString *mode = options[@"mode"];
-    NSLog (@"mode_send = %@", mode);
     NSMutableArray *istapdu = [NSMutableArray arrayWithObjects: @"00A4040008A000000054480001",nil];
     if([mode isEqual: @"personal_data"]){
-        NSLog (@"mode_send = %s", "First");
         NSArray *sourceArray = [NSArray arrayWithObjects:@"80B0000402000D", @"80B000110200D1", @"80B01579020064", @"80B00167020012", nil];
         [istapdu addObjectsFromArray:sourceArray];
     }else if([mode isEqual: @"personal_photo"]){
-        NSLog (@"mode_send = %s", "Second");
         NSArray *sourceArray = [NSArray arrayWithObjects:@"80B0017B0200FE", @"80B002790200FE", @"80B003770200FE", @"80B004750200FE", @"80B005730200FE", @"80B006710200FE", @"80B0076F0200FE", @"80B0086D0200FE", @"80B0096B0200FE", @"80B00A690200FE", @"80B00B670200FE", @"80B00C650200FE",@"80B00D630200FE", @"80B00E610200FE", @"80B00F5F0200FE", @"80B0105D0200FE", @"80B0115B0200FE", @"80B012590200FE", @"80B013570200FE", @"80B014550200FE", @"80B01553020026", nil];
         [istapdu addObjectsFromArray:sourceArray];
     }
