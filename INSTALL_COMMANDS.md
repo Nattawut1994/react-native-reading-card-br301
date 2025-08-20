@@ -23,15 +23,18 @@ npm install git+https://github.com/Nattawut1994/react-native-reading-card-br301.
 yarn add git+https://github.com/Nattawut1994/react-native-reading-card-br301.git#main
 ```
 
-## 🚀 **สำหรับ Production (ถ้า publish แล้ว)**
+## 🚀 **สำหรับ Production (Published on npm)**
 
-### ติดตั้งจาก NPM Registry (Scoped Package)
+### ติดตั้งจาก NPM Registry
 ```bash
-# ติดตั้งจาก npm registry ด้วย scoped name
-npm install @nattawut1994/react-native-reading-card-br301
+# ติดตั้งจาก npm registry
+npm install react-native-reading-card-br301-ntl
 
 # หรือ
-yarn add @nattawut1994/react-native-reading-card-br301
+yarn add react-native-reading-card-br301-ntl
+
+# ระบุ version เฉพาะ
+yarn add react-native-reading-card-br301-ntl@1.2.0
 ```
 
 ## 📋 **การใช้งานใน Code**
@@ -39,8 +42,8 @@ yarn add @nattawut1994/react-native-reading-card-br301
 ### Import Statement
 ```typescript
 // ใน TypeScript/JavaScript files
-import { multiply } from '@nattawut1994/react-native-reading-card-br301';
-import CardReaderModule from '@nattawut1994/react-native-reading-card-br301';
+import { multiply } from 'react-native-reading-card-br301-ntl';
+import CardReaderModule from 'react-native-reading-card-br301-ntl';
 
 // หรือถ้าใช้ local installation
 import { multiply } from 'react-native-reading-card-br301';

@@ -1,5 +1,5 @@
 {
-  "name": "@nattawut1994/react-native-reading-card-br301",
+  "name": "react-native-reading-card-br301-ntl",
   "version": "1.2.0",
   "description": "React Native library for Feitian BR301 card reader - NTL Edition",
   "main": "lib/commonjs/index",
@@ -25,7 +25,7 @@
     "test": "jest",
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "prepare": "bob build",
+    "build": "bob build",
     "release": "release-it",
     "example": "yarn workspace example",
     "bootstrap": "yarn example && yarn && yarn example pods",
@@ -38,14 +38,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chamodnaja/react-native-reading-card-br301.git"
+    "url": "git+https://github.com/Nattawut1994/react-native-reading-card-br301.git"
   },
-  "author": "anonymous <anonymous@anonymousmail.com> (-)",
+  "author": "Nattawut Kontan <nattawut.kontan@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chamodnaja/react-native-reading-card-br301.git/issues"
+    "url": "https://github.com/Nattawut1994/react-native-reading-card-br301/issues"
   },
-  "homepage": "https://github.com/chamodnaja/react-native-reading-card-br301.git#readme",
+  "homepage": "https://github.com/Nattawut1994/react-native-reading-card-br301#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

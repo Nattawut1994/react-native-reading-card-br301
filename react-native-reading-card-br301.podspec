@@ -6,7 +6,7 @@ folly_version = '2024.06.10.00'
 folly_compiler_flags = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DFOLLY_CFG_NO_COROUTINES=1 -DFOLLY_HAVE_CLOCK_GETTIME=1 -Wno-comma -Wno-shorten-64-to-32'
 
 Pod::Spec.new do |s|
-  s.name         = "@nattawut1994/react-native-reading-card-br301"
+  s.name         = "react-native-reading-card-br301-ntl"
   s.version      = package["version"]
   s.summary      = package["description"]
   s.homepage     = package["homepage"]
