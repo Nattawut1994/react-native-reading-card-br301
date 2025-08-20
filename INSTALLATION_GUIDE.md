@@ -17,14 +17,19 @@ cd MyCardReaderApp
 ### 2. ติดตั้งแพคเกจ
 
 ```bash
-# วิธีที่ 1: ติดตั้งจาก Local Path
+# วิธีที่ 1: ติดตั้งจาก Local Path (แนะนำ)
 npm install file:../path/to/react-native-reading-card-br301
 
-# วิธีที่ 2: ติดตั้งจาก Git Repository
-npm install https://github.com/Nattawut1994/react-native-reading-card-br301.git
+# วิธีที่ 2: ติดตั้งจาก Git Repository พร้อม tag
+npm install git+https://github.com/Nattawut1994/react-native-reading-card-br301.git#main
+
+# วิธีที่ 3: ติดตั้งด้วย scoped name (ถ้า publish แล้ว)
+npm install @nattawut1994/react-native-reading-card-br301
 
 # หรือใช้ yarn
 yarn add file:../path/to/react-native-reading-card-br301
+yarn add git+https://github.com/Nattawut1994/react-native-reading-card-br301.git#main
+yarn add @nattawut1994/react-native-reading-card-br301
 ```
 
 ### 3. ติดตั้งและตั้งค่าสำหรับ iOS
