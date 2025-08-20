@@ -1,0 +1,8 @@
+{
+    "name": "FeitianBr301ModuleSpec",
+    "type": "modules",
+    "jsSrcsDir": "src",
+    "android": {
+        "javaPackageName": "com.reactnativefeitianbr301module"
+    }
+}
