@@ -5,10 +5,10 @@
 ### ติดตั้งจาก Local Path
 ```bash
 # ใช้เมื่อต้องการ develop หรือ test package
-npm install file:../react-native-reading-card-br301
+npm install file:../react-native-reading-card-br301-ntl
 
 # หรือ
-yarn add file:../react-native-reading-card-br301
+yarn add file:../react-native-reading-card-br301-ntl
 ```
 
 ### ติดตั้งจาก Git Repository (Specific Branch/Tag)
@@ -46,15 +46,15 @@ import { multiply } from 'react-native-reading-card-br301-ntl';
 import CardReaderModule from 'react-native-reading-card-br301-ntl';
 
 // หรือถ้าใช้ local installation
-import { multiply } from 'react-native-reading-card-br301';
-import CardReaderModule from 'react-native-reading-card-br301';
+import { multiply } from 'react-native-reading-card-br301-ntl';
+import CardReaderModule from 'react-native-reading-card-br301-ntl';
 ```
 
 ### Package.json Dependencies
 ```json
 {
   "dependencies": {
-    "@nattawut1994/react-native-reading-card-br301": "^1.2.0"
+    "react-native-reading-card-br301-ntl": "^1.2.2"
   }
 }
 ```
@@ -67,7 +67,7 @@ import CardReaderModule from 'react-native-reading-card-br301';
 {
   "workspaces": [
     "apps/*",
-    "libs/react-native-reading-card-br301"
+    "libs/react-native-reading-card-br301-ntl"
   ]
 }
 ```
@@ -75,10 +75,10 @@ import CardReaderModule from 'react-native-reading-card-br301';
 ### การ Link Local Package
 ```bash
 # ใน directory ของ main app
-yarn add link:../libs/react-native-reading-card-br301
+yarn add link:../libs/react-native-reading-card-br301-ntl
 
 # หรือ
-npm install file:../libs/react-native-reading-card-br301
+npm install file:../libs/react-native-reading-card-br301-ntl
 ```
 
 ## 🏗️ **สำหรับ CI/CD**
@@ -93,14 +93,14 @@ RUN npm install git+https://github.com/Nattawut1994/react-native-reading-card-br
 ```json
 {
   "dependencies": {
-    "@nattawut1994/react-native-reading-card-br301": "git+https://github.com/Nattawut1994/react-native-reading-card-br301.git#main"
+    "react-native-reading-card-br301-ntl": "git+https://github.com/Nattawut1994/react-native-reading-card-br301.git#main"
   }
 }
 ```
 
 ## ⚠️ **หมายเหตุสำคัญ**
 
-1. **Scoped Package Name**: `@nattawut1994/react-native-reading-card-br301` จะไม่ซ้ำกับ package อื่น
+1. **Package Name**: `react-native-reading-card-br301-ntl` จะไม่ซ้ำกับ package อื่น
 2. **Git Installation**: แนะนำใช้ specific tag หรือ commit hash สำหรับ production
 3. **Local Development**: ใช้ `file:` protocol สำหรับการพัฒนา
 4. **Auto-linking**: React Native 0.60+ จะทำ auto-linking อัตโนมัติ
@@ -109,10 +109,10 @@ RUN npm install git+https://github.com/Nattawut1994/react-native-reading-card-br
 
 ```bash
 # ตรวจสอบว่าติดตั้งสำเร็จ
-npm list @nattawut1994/react-native-reading-card-br301
+npm list react-native-reading-card-br301-ntl
 
 # หรือ
-yarn why @nattawut1994/react-native-reading-card-br301
+yarn why react-native-reading-card-br301-ntl
 ```
 
 ## 📞 **ติดต่อ/ช่วยเหลือ**

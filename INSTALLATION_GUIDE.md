@@ -1,4 +1,4 @@
-# การติดตั้งและใช้งาน react-native-reading-card-br301
+# การติดตั้งและใช้งาน react-native-reading-card-br301-ntl
 
 ## 🚀 Quick Start
 
@@ -18,18 +18,18 @@ cd MyCardReaderApp
 
 ```bash
 # วิธีที่ 1: ติดตั้งจาก Local Path (แนะนำ)
-npm install file:../path/to/react-native-reading-card-br301
+npm install file:../path/to/react-native-reading-card-br301-ntl
 
 # วิธีที่ 2: ติดตั้งจาก Git Repository พร้อม tag
 npm install git+https://github.com/Nattawut1994/react-native-reading-card-br301.git#main
 
-# วิธีที่ 3: ติดตั้งด้วย scoped name (ถ้า publish แล้ว)
-npm install @nattawut1994/react-native-reading-card-br301
+# วิธีที่ 3: ติดตั้งจาก npm registry (ถ้า publish แล้ว)
+npm install react-native-reading-card-br301-ntl
 
 # หรือใช้ yarn
-yarn add file:../path/to/react-native-reading-card-br301
+yarn add file:../path/to/react-native-reading-card-br301-ntl
 yarn add git+https://github.com/Nattawut1994/react-native-reading-card-br301.git#main
-yarn add @nattawut1994/react-native-reading-card-br301
+yarn add react-native-reading-card-br301-ntl
 ```
 
 ### 3. ติดตั้งและตั้งค่าสำหรับ iOS
@@ -75,8 +75,8 @@ npx react-native run-android
 ```javascript
 import React from 'react';
 import { View, Button, Alert } from 'react-native';
-import { multiply } from 'react-native-reading-card-br301';
-import CardReaderModule from 'react-native-reading-card-br301';
+import { multiply } from 'react-native-reading-card-br301-ntl';
+import CardReaderModule from 'react-native-reading-card-br301-ntl';
 
 export default function App() {
   const testFunction = async () => {
@@ -157,10 +157,10 @@ CardReaderModule.methodName()
 
 ```bash
 # อัปเดตเป็นเวอร์ชันใหม่
-npm update react-native-reading-card-br301
+npm update react-native-reading-card-br301-ntl
 
 # หรือติดตั้งเวอร์ชันใหม่
-npm install react-native-reading-card-br301@latest
+npm install react-native-reading-card-br301-ntl@latest
 ```
 
 ## ⚡ Performance Tips

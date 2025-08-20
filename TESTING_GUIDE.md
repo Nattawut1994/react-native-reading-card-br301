@@ -1,4 +1,4 @@
-# Testing Guide for react-native-reading-card-br301
+# Testing Guide for react-native-reading-card-br301-ntl
 
 ## 1. ทดสอบการติดตั้งในโปรเจคใหม่
 
@@ -8,7 +8,7 @@ npx @react-native-community/cli@latest init TestProject --version 0.81.0
 cd TestProject
 
 # ติดตั้งแพคเกจ
-npm install file:../path/to/react-native-reading-card-br301
+npm install file:../path/to/react-native-reading-card-br301-ntl
 
 # iOS
 cd ios && pod install && cd ..
@@ -24,8 +24,8 @@ npx react-native run-android
 // App.tsx
 import React from 'react';
 import { View, Button, Alert } from 'react-native';
-import { multiply } from 'react-native-reading-card-br301';
-import CardReaderModule from 'react-native-reading-card-br301';
+import { multiply } from 'react-native-reading-card-br301-ntl';
+import CardReaderModule from 'react-native-reading-card-br301-ntl';
 
 export default function App() {
   const testMultiply = async () => {

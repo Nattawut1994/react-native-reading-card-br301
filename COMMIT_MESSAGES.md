@@ -56,7 +56,7 @@ BREAKING CHANGES:
 - `tsconfig.json` - Enhanced TypeScript configuration
 
 ### iOS Changes:
-- `react-native-reading-card-br301.podspec` - Updated Folly version and iOS minimum
+- `react-native-reading-card-br301-ntl.podspec` - Updated Folly version and iOS minimum
 - `ios/FeitianBr301Module.h` - Added New Architecture support
 - `ios/FeitianBr301Module.mm` - Enhanced TurboModule implementation
 

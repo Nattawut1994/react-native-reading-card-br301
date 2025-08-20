@@ -1,6 +1,6 @@
-# react-native-reading-card-br301
+# react-native-reading-card-br301-ntl
 
-React Native library for BR301 card reader integration with React Native 0.81.0+ support.
+React Native library for BR301 card reader integration with React Native 0.81.0+ support - NTL Edition.
 
 Modified from: [repository](https://github.com/realoiji/react-native-ntl-id-card-reader.git)  
 SDKs: [version 3.5.64](https://github.com/FeitianSmartcardReader/FEITIAN_MOBILE_READERS.git)
@@ -19,12 +19,12 @@ SDKs: [version 3.5.64](https://github.com/FeitianSmartcardReader/FEITIAN_MOBILE_
 
 ### Using npm
 ```bash
-npm install react-native-reading-card-br301
+npm install react-native-reading-card-br301-ntl
 ```
 
 ### Using yarn
 ```bash
-yarn add react-native-reading-card-br301
+yarn add react-native-reading-card-br301-ntl
 ```
 
 ### iOS Setup
@@ -37,8 +37,8 @@ cd ios && pod install
 ```javascript
 import React from 'react';
 import { View, Button, Alert } from 'react-native';
-import { multiply } from 'react-native-reading-card-br301';
-import CardReaderModule from 'react-native-reading-card-br301';
+import { multiply } from 'react-native-reading-card-br301-ntl';
+import CardReaderModule from 'react-native-reading-card-br301-ntl';
 
 export default function App() {
   const testMultiply = async () => {

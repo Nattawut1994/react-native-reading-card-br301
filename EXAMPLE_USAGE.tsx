@@ -8,8 +8,8 @@ import {
     SafeAreaView,
     ScrollView,
 } from 'react-native';
-import { multiply } from '@nattawut1994/react-native-reading-card-br301';
-import CardReaderModule from '@nattawut1994/react-native-reading-card-br301';
+import { multiply } from 'react-native-reading-card-br301-ntl';
+import CardReaderModule from 'react-native-reading-card-br301-ntl';
 
 const App = () => {
     const [result, setResult] = useState<number | null>(null);

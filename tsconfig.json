@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-reading-card-br301": [
+      "react-native-reading-card-br301-ntl": [
         "./src/index"
       ]
     },
