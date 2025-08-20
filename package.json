@@ -1,6 +1,6 @@
 {
   "name": "react-native-reading-card-br301-ntl",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "React Native library for Feitian BR301 card reader - NTL Edition",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -13,7 +13,7 @@
     "android",
     "ios",
     "cpp",
-    "react-native-reading-card-br301.podspec",
+    "react-native-reading-card-br301-ntl.podspec",
     "!lib/typescript/example",
     "!android/build",
     "!ios/build",
